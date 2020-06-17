@@ -1,0 +1,61 @@
+#+title: org-roam
+
+- tags :: [[file:20200614010514-org_mode.org][org-mode]]
+
+* Roam tips
+
+** Basics
+- Create/Capture a new note =SPC n c=
+- Find a note =SPC n f=
+- Insert a note =SPC n i=
+- Setup
+
+#+BEGIN_SRC lisp
+(setq org-roam-directory "~/dev/flashes/org-roam")
+
+(after! org-roam
+        (map! :leader
+            :prefix "n"
+            :desc "org-roam" "l" #'org-roam
+            :desc "org-roam-insert" "i" #'org-roam-insert
+            :desc "org-roam-switch-to-buffer" "b" #'org-roam-switch-to-buffer
+            :desc "org-roam-find-file" "f" #'org-roam-find-file
+            :desc "org-roam-show-graph" "g" #'org-roam-show-graph
+            :desc "org-roam-insert" "i" #'org-roam-insert
+            :desc "org-roam-capture" "c" #'org-roam-capture))
+#+END_SRC
+** Deft
+- Open deft =SPC n d=
+- Setup
+
+#+BEGIN_SRC lisp
+(use-package org-journal
+      :bind
+      ("C-c n j" . org-journal-new-entry)
+      :custom
+      (org-journal-dir "~/dev/flashes/org-roam/")
+      (org-journal-date-prefix "#+TITLE: ")
+      (org-journal-file-format "%Y-%m-%d.org")
+      (org-journal-date-format "%A, %d %B %Y"))
+(setq org-journal-enable-agenda-integration t)
+#+END_SRC
+
+** Org-journal
+- Add a new journal =SPC n j j= or =C-c n j= (custom)
+- Setup
+
+#+BEGIN_SRC lisp
+(use-package deft
+      :after org
+      :bind
+      ("C-c n d" . deft)
+      :custom
+      (deft-recursive t)
+      (deft-use-filter-string-for-filename t)
+      (deft-default-extension "org")
+      (deft-directory "~/dev/flashes/org-roam/"))
+#+END_SRC
+
+** Refs
+- [[https:www.ianjones.us/2020-05-05-doom-emacs][Set Up org-roam on Your Own Machine]]
+- [[https:org-roam.readthedocs.io/en/master/tour/][A Tour of Org-roam]]

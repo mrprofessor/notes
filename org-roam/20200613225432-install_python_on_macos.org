@@ -1,0 +1,44 @@
+#+title: Install python on MacOs
+
+- tags :: [[file:20200614001521-python.org][Python]]
+
+* Install python on Mac os
+
+- Installing python on mac os can be a bit tricky as it alreay comes with python 2.x and python 3.x(since 10.15.x).
+- To make sure that we don't mess with the default installation I use [[https://github.com/pyenv/pyenv][pyenv]]
+
+- Install Pyenv
+
+#+BEGIN_SRC
+# Install pyenv
+brew install pyenv
+
+# Add pyenv initializer to shell startup script
+echo 'eval "$(pyenv init -)"' >> ~/.bash_profile
+
+# Reload your profile
+source ~/.bash_profile
+#+END_SRC
+
+- Install python versions
+
+#+BEGIN_SRC sh
+
+# Install required python version
+pyenv install 3.8.2
+
+# Set global python
+pyenv global 3.8.2
+#+END_SRC
+
+- List all the installed pyenv versions
+
+#+BEGIN_SRC sh
+pyenv versions
+#+END_SRC
+
+- Setting a local pyhon version will create a =.python-version= file in the directory
+
+#+BEGIN_SRC sh
+pyenv local 3.6.0
+#+END_SRC

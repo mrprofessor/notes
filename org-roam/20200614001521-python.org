@@ -1,0 +1,5 @@
+#+title: Python
+
+* Python
+
+- This tag is all abput python.

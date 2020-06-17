@@ -1,0 +1,21 @@
+#+title: Mac os command line stats
+
+- tags :: [[file:20200614013642-mac_os.org][Mac os]]
+ 
+- Get system profile power
+
+#+BEGIN_SRC sh
+system_profiler SPPowerDataType
+#+END_SRC
+
+- Check whether mac is charging
+
+#+BEGIN_SRC sh
+system_profiler SPPowerDataType | grep -m1 "Charging" | awk '{print $2}'
+#+END_SRC
+
+- Get battery percentage
+
+#+BEGIN_SRC sh
+pmset -g batt | egrep '([0-9]+)%.*' -o | cut -f1 -d';'
+#+END_SRC

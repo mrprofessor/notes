@@ -1,0 +1,380 @@
+#+title: Go - Functions, methods and interfaces
+
+- tags :: [[file:20200614231014-golang.org][GoLang]]
+
+* Functions
+
+** Week 1 (Functions and organization)
+** Week 2 (Function types)
+*** First class values
+**** Variables can be declared with a function type.
+
+#+BEGIN_SRC go :results output
+
+// package doesn't work on org-mode
+// package main
+
+import (
+    "fmt"
+)
+
+// Declare a variable as a func
+var funcVar func(int) int
+
+func incFn(x int) int {
+    return x + 1
+}
+
+func main() {
+    // Assign incFn to funcVar
+    funcVar = incFn
+    fmt.Println(funcVar(10))  //11
+}
+
+#+END_SRC
+
+**** Functions can be created dynamically(As anonymous functions)
+
+#+BEGIN_SRC go :results output
+
+// package doesn't work on org-mode
+// package main
+
+import (
+    "fmt"
+)
+
+func applyFunc(passedFunc func (int, int) int, num int, delta int) int {
+    return passedFunc(num, delta)
+}
+
+func main() {
+    // Create an anonmous function dynamically
+    incNum := applyFunc(func (num int, val int) int {return num + val}, 10, 1)
+    fmt.Println(incNum) //11
+
+}
+
+#+END_SRC
+
+**** Functions can be passed as arguments and returned as values.
+
+#+BEGIN_SRC go :results output
+
+// package doesn't work on org-mode
+// package main
+
+import (
+    "fmt"
+)
+
+func incrementNum(num, delta int) int {
+    return num + delta
+}
+
+func decrementNum(num, delta int) int {
+    return num - delta
+}
+
+func applyFunc(passedFunc func(int, int) int, num, delta int) int {
+    return passedFunc(num, delta)
+}
+
+func main() {
+    incNum := applyFunc(incrementNum, 10, 1)
+    fmt.Println(incNum)     // 11
+    decNum := applyFunc(decrementNum, 10, 1)
+    fmt.Println(decNum)     // 9
+
+}
+
+
+#+END_SRC
+
+**** Functions can also be stored in data structures.
+- Check [[Using struct as a class]]
+
+*** Returning functions
+**** Closure
+
+- Closure is Function + it's environment
+- When functions are passed/returned their environment comes with them.
+- *Closures can be used to configure a function*
+
+- Example: =Distance to Origin function=
+#+BEGIN_SRC go :results output
+
+
+// package doesn't work on org-mode
+// package main
+
+import (
+    "fmt"
+    "math"
+)
+
+// makeOrigin returns a function that takes two floats as args
+func makeOrigin(o_x, o_y float64) func (float64, float64) float64 {
+    calcDistance := func (x, y float64) float64 {
+        return math.Sqrt(math.Pow(o_x - x, 2) + math.Pow(o_y - y, 2))
+    }
+
+    return calcDistance
+}
+
+func main() {
+    origin1 := makeOrigin(0, 0)
+    origin2 := makeOrigin(2, 2)
+
+    // Distance of (2, 2) from (0, 0) is
+    fmt.Println(origin1(2, 2)) // 2.83
+    fmt.Println(origin1(0, 3)) // 3
+
+    // Distance of (2, 2) from (2, 2) is
+    fmt.Println(origin2(2, 2)) // 0
+}
+
+#+END_SRC
+
+#+RESULTS:
+: 2.8284271247461903
+: 3
+: 0
+
+*** Variadic and Deferred
+**** Varible argument number
+
+- Functions can take a variable number of args
+- =...= aka =ellipsis= can be used to specify these variable number of args
+- It's treated as a slice inside a function
+- The values can be passed as comma separate args =calculate(x,y,z)=.
+- The values can also be passed as a slice =vals...=
+- This can be compared as Python's argument unpacking and JavaScript's destructuring.
+
+#+BEGIN_SRC go :results output
+
+// package doesn't work on org-mode
+// package main
+
+import (
+    "fmt"
+)
+
+func getMax(vals ...int) int {
+    // Initialize max variable
+    max := -1
+
+    // vals is a slice
+    for _, v := range vals {
+        if v > max {
+            max = v
+        }
+    }
+
+    return max
+}
+
+func main() {
+    maxValue := getMax(12, 34, 21, 23, 45, 64, 48)
+    fmt.Println("The maximum value: ", maxValue) // 64
+
+    // Create a slice
+    vals := []int{12, 34, 21, 23, 45, 64, 48}
+    fmt.Println("The maximum value in the slice: ", getMax(vals...))
+
+}
+#+END_SRC
+
+#+RESULTS:
+: The maximum value:  64
+: The maximum value in the slice:  64
+**** Deferred function calls
+
+- A function call can be deferred until the surrounding function completes. Which means the call will happen after the surrounding function is out of the scope.
+- Typically used for cleanup activities.
+- *The arguments are evaluated immediately.*
+
+#+BEGIN_SRC go :results output
+
+// package doesn't work on org-mode
+// package main
+
+import (
+    "fmt"
+)
+
+func main() {
+
+    defer fmt.Println("Function executed.")
+    fmt.Println("Function starts.")
+
+    // The arguments are evaluated immediately.
+
+    i := 1
+    defer fmt.Println(i + 1) // 2
+    i++
+    fmt.Println(i) // 2
+
+}
+
+
+#+END_SRC
+
+#+RESULTS:
+: Function starts.
+: 2
+: 2
+: Function executed.
+** Week 3 (Object orientation in go)
+- Does golang supports object oriented programming? (instructor says yes)
+*** Classes and encapsulation
+**** Classes
+- Class is a collection of data fields and functions that share a well-defined responsibiity.
+- Class is a =template=
+- Contains =data fields= not =data=
+- *Object* is an instance of a class. It contains real data.
+***** Go's support for Classes
+- Unlike any other OO languages Go lang doesn't have =Class= keyword.
+****** Associating Methods with Data
+- Method has a =receiver type= that it is associated with.
+- Use =dot notation= to call the associated method.
+
+#+BEGIN_SRC go :results output
+
+// Package is not supported in org-mode
+// package main
+
+import (
+    "fmt"
+)
+
+// Declare type MyInt
+type MyInt int
+
+//  implicit_arg MyInt function_name
+func (mi MyInt) Double () int {
+    return int(mi*2)
+}
+
+func main() {
+    // Create an MyInt object
+    num := MyInt(3)
+    fmt.Println(num.Double())
+
+}
+#+END_SRC
+
+#+RESULTS:
+: 6
+
+****** Using struct as a class
+- Struct is better fitted to a be a receiver type as it can hold different types of data fields including functions.
+
+- Example: =Distance to Origin function=
+#+BEGIN_SRC go :results output
+
+
+// Package is not supported in org-mode
+// package main
+
+import (
+    "fmt"
+	"math"
+)
+
+type Point struct {
+    x float64
+    y float64
+}
+
+// Calcuate distance from the point
+func (p1 Point) calcDistance(p2 Point) float64 {
+    return math.Sqrt(math.Pow(p1.x - p2.x, 2) + math.Pow(p1.y - p2.y, 2))
+}
+
+func main() {
+    // Make origins
+    origin1 := Point{0, 0}
+
+    //make marks
+    mark1 := Point{2, 2}
+    mark2 := Point{0, 4}
+
+    fmt.Printf("Distance from %v to %v is: %f\n", origin1, mark1, origin1.calcDistance(mark1))
+    fmt.Printf("Distance from %v to %v is: %f\n", origin1, mark2, origin1.calcDistance(mark2))
+}
+
+#+END_SRC
+
+#+RESULTS:
+: Distance from {0 0} to {2 2} is: 2.828427
+: Distance from {0 0} to {0 4} is: 4.000000
+
+**** Encapsulation
+- Internal data can be protected from a programmer using our class.
+- Data can be accessed only by using methods.
+- Only methods *starting with a capital letter* can be exported and hence can be public.
+***** Pointer receivers
+#+BEGIN_SRC go :results output
+
+// Package is not supported in org-mode
+// package main
+
+import (
+    "fmt"
+)
+
+type Point struct {
+    x float64
+    y float64
+}
+
+func (p Point) ScaleByValue(val float64) {
+    p.x = p.x * val
+    p.y = p.y * val
+
+    fmt.Println(p) // {3, 3}
+}
+
+func (p *Point) ScaleByReference(val float64) {
+    p.x = p.x * val
+    p.y = p.y * val
+}
+
+
+func main() {
+    p := Point{1, 1}
+
+    p.ScaleByValue(3)
+    fmt.Println("Scale by value: ", p) // {1, 1}
+
+    p.ScaleByReference(3)
+    fmt.Println("Scale by reference: ", p) // {3, 3}
+
+}
+#+END_SRC
+***** Reference and derefernce
+
+- No need to reference the pointer
+
+#+BEGIN_EXAMPLE go
+
+func main() {
+    p := Point{3, 4}
+    // No need to reference the variable e.g &p
+    p.Scale(3)
+}
+
+#+END_EXAMPLE
+
+
+- No need to derefernce the pointer
+
+#+BEGIN_EXAMPLE go
+
+func (p *Point) ScaleByReference(val float64) {
+    // No neeed to derefernce the pointer e.g. *p
+    p.x = p.x * val
+    p.y = p.y * val
+}
+#+END_EXAMPLE

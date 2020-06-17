@@ -1,0 +1,6 @@
+#+title: Appendix: Own Your Second Brain: Set Up org-roam on Your Own Machine
+#+roam_key: https://www.ianjones.us/2020-05-05-doom-emacs
+
+- tags :: [[file:20200614010514-org_mode.org][org-mode]]
+
+- Refs

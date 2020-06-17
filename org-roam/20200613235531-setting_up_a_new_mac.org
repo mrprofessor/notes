@@ -1,0 +1,59 @@
+#+title: Setting up a new Mac
+
+- tags :: [[file:20200614013642-mac_os.org][Mac os]]
+
+* Mac setup
+
+** Essentials [3/3]
+- [X] Enable touch to click and two finger tap
+- [X] Modify Caps Lock to escape/ctrl
+- [X] Remove unnecessary apps from the dock
+
+** Install applications [9/9]
+- [X] Install brave/chrome/firefox using safari
+- [X] Install Slack/Teams if needed.
+- [X] Install Spotify
+- [X] Install spectacle
+- [X] Install unsplash
+- [X] Install Alfred
+- [X] Install Zoom
+- [X] Install Discord
+- [X] Install google drive
+- [ ] Install night owl
+
+** Programming [10/12]
+- [X] Install Xcode or command line tools =(xcode-select --install)=
+- [X] Change hostname =(sudo scutil --set HostName mrprofessor)=
+- [X] Install [[github:mrprofessor/dotfiles][dotfiles]]
+  - [X] Install dev tools(vim, emacs, terminal etc)
+  - [X] Install required programming fonts
+- [X] Install operator mono patched font.
+- [X] Install Postico
+- [X] Install docker
+- [X] Install virtualbox
+- [ ] Install postgres
+
+
+- [X] Python [3/3] ([[file:20200613225432-install_python_on_macos.org][Install python on MacOs]])
+  - [X] Install pyenv
+  - [X] Install neovim =(pip3 install neovim)=
+  - [X] =pyenv global 3.6.0=
+
+
+- [X] Node [3/3]
+  - [X] Install n
+  - [X] Set n's installation directory
+  - [X] Install a node lts version
+
+
+- [-] Go [1/2]
+  - [X] Install Go
+  - [ ] Install gopls
+
+
+- [X] Rust [1/1]
+  - [X] Install Rust
+
+** Gaming [1/2]
+- [X] Install Steam
+- [ ] Install Minecraft

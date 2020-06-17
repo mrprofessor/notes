@@ -1,0 +1,91 @@
+#+title: Go - Trivial methods
+
+- tags :: [[file:20200614231014-golang.org][GoLang]]
+
+* Trivial methods
+
+- Let's get to the point. Go is not a very feature packed language like [[file:20200614001521-python.org][Python]] or Java. For basic tasks like checking the existence of an element in an array or slice we need to write functions. This note will contain these small snippets that are commonly used and is hard to live without.
+
+- Long term goal is to make a library if we have enough of these snippets. Something like [[https://lodash.com/][Lodash]].
+
+
+** Slice
+
+*** contains
+
+
+#+BEGIN_EXAMPLE go
+
+func contains(sli []string, item string) bool {
+    for _, element := range(sli) {
+        if element == item {
+            return true
+        }
+    }
+    return false
+}
+
+#+END_EXAMPLE
+
+- Example
+
+#+BEGIN_SRC go :results output
+
+import "fmt"
+
+func contains(sli []string, item string) bool {
+    for _, element := range(sli) {
+        if element == item {
+            return true
+        }
+    }
+    return false
+}
+
+func main() {
+
+    var (
+        actual   bool
+        expected bool
+    )
+
+    sli := []string{"hello", "aloha", "namaste", "salam"}
+
+    actual = contains(sli, "aloha")
+    expected = true
+
+    fmt.Println(actual == expected) // true
+
+    actual = contains(sli, "hi")
+    expected = true
+
+    fmt.Println(actual == expected) // false
+}
+
+#+END_SRC
+
+#+RESULTS:
+: true
+: false
+
+#+BEGIN_SRC go :results output
+
+import "fmt"
+
+func main() {
+
+    sli := []string{"hello", "aloha", "namaste", "salam"}
+
+    for index, str := range sli {
+        fmt.Println(index, str)
+    }
+
+}
+
+#+END_SRC
+
+#+RESULTS:
+: 0 hello
+: 1 aloha
+: 2 namaste
+: 3 salam

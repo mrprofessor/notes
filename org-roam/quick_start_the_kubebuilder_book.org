@@ -1,0 +1,4 @@
+#+title: The Kubebuilder Book
+#+roam_key: https://book.kubebuilder.io/quick-start.html#installation
+
+- tags :: [[file:20200615181354-kubernetes.org][Kubernetes]]

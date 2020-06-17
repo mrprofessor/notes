@@ -1,0 +1,29 @@
+#+title: My obsessions with Os and text-editors
+
+- tags :: [[file:20200617170955-drafts.org][Drafts]]
+
+* My obsessions with Os and text-editors
+
+** Intro
+
+So here I am writting this log on an emacs with [[file:20200614010514-org_mode.org][org-mode]]. Never thought I could ever use emacs ever. In this log I am gonna talk about in severe obsessions with different tools that I use rather than real software.
+
+** My journey
+
+*** The beginning
+
+I remember started working an editor in the beginning, before writting code on paper in school. I left computer science and went for biology mostly because the way it was being taught.
+
+I joined a fairly unknown college in my state with computer science as my engineering major. There I remember working on [[https://en.wikipedia.org/wiki/Turbo_C%2B%2B][Turbo C++]] like most other grads. I remember quickly switching to [[http://www.codeblocks.org/][Code::Blocks]] as it was a way more modern IDE.
+
+Soon I found out that =C/C++= is not really useful enough for me as I wanted to build web applications. In my 2ns year I started learning =c#= and got an way into web-dev. Then for sometime I played with Java, Javascript before jumping into Python in the 3rd year of my college.
+
+By that time mostly I was using windows as it suited best for my gaming needs. My real journey to linux started when I bought a [[https://www.raspberrypi.org/][Raspberry pi 3]] for a minor project. I had to ssh into the pi as I didn't have a monitor, and edit programs in Vim.
+
+[Add an image of my raspberry pi 3]
+
+That was probably the first meaningful encounter with Vim. Then I went on to have a certification in [[][RHCSA]] where I had to do everything in Vim and I hated it the most. I couldn't copy paste the way I used to, didn't know how to move around different text files without exiting vim, had no idea of maintaining a permanet =.vimrc=. It literally made my life worse.
+
+*** Real world
+
+After graduating I joined [[https://www.wipro.com/][Wipro]] as a software engineer traine and went through a rigorous bootcamp in system programming and guess what, as I had only access to a linux box most of time was spent writting code in vim.

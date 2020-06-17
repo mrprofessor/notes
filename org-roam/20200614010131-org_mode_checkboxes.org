@@ -1,0 +1,7 @@
+#+title: org mode checkboxes
+
+- tags :: [[file:20200614010514-org_mode.org][org-mode]]
+
+** Insert checkboxes in org-mode
+- syntax = =- [ ]=
+- [[https://orgmode.org/manual/Checkboxes.html][Org-mode checkbox manual]]

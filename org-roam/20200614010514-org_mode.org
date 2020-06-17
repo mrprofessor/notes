@@ -1,0 +1,15 @@
+#+title: org-mode
+
+* Org-mode
+
+** Tips and tricks
+*** Org-babel
+
+- Select the whole code block =C-M-h=
+- Edit source in a separate buffer =C-c '=
+- Run the source =C-c C-c=
+
+** Refs
+
+  - [[file:own_your_second_brain_set_up_org_roam_on_your_own_machine.org][🧠 Own Your Second Brain: Set Up org-roam on Your Own Machine]]
+  - [[file:appendix_roam_protocol_org_roam.org][Appendix: Roam Protocol - Org-roam]]
