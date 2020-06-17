@@ -1,0 +1,9 @@
+
+* Notes
+
+- This is my evolving notes repository built using zettelkasten philosophy and [[https://github.com/org-roam/org-roam/][org-roam]].
+- These are purely written for only my understanding.
+
+
+** Todos
+- Publish to the web with graphs.
