@@ -1,0 +1,209 @@
+#+title: Rust basics
+
+- tags :: [[file:20200619203151-rust.org][Rust]]
+
+* Basics
+- Youtube Link : [[youtube:n5TRBkbystY][Basic data types in Rust]]
+** Integers
+- Fixed size integers(u8, u16...i8, i16..i128)
+  - Default integer size is =i32=
+- Pointer size integers(usize, isize)
+** Floats
+- Two types of floats(f32, f64)
+- Defaut float type is =f64=
+- Float types also represent INFINITY and NAN
+#+BEGIN_EXAMPLE rust
+let inf = 1.0/0.0;    //::std::f64::INFINITY
+
+let nan = 0.0f32/0.0;  //::std::f32::NAN
+#+END_EXAMPLE
+** Bools
+- =true= or =false=
+- Booleans take an entire byte even though it represents one bit of information.
+** Characters
+- Type =char=
+- Enclosed in single quotes ='a'=
+- All unicode characters takes up 4 bytes of memory.
+
+#+BEGIN_EXAMPLE rust
+
+let b1: char = 'b';
+
+let b2 = '\x62';         // ASCII char
+let b3 = '\u{62}';       // Unicode char
+
+#+END_EXAMPLE
+** Tuples
+- Tuples are fixed length collections of values of different types.
+- Tuples can have maximum 12 elements.
+
+#+BEGIN_SRC rustic
+fn main() {
+    let tup = (true, 34, 'a');
+    println!("{} {} {}", tup.0, tup.1, tup.2);
+    println!("{:?}", tup);
+}
+#+END_SRC
+** Arrays
+- Arrays represent fixed length of collections of values of same type.
+- Arrays can written like [T:N], where
+  - T = Type of array elements
+  - N = Size of array
+
+#+BEGIN_SRC rustic
+fn main() {
+    let nums: [i32; 3] = [1, 2, 3];
+    println!("{:?}", nums);
+    println!("{}", nums[1]);
+
+    let chars = ['x'; 5];
+    println!("{:?}", chars);
+
+    let new_chars: [char; 2] = ['a', 'b'];
+    println!("{:?}", new_chars);
+
+    let default_nums = [1i8, 2, 4];
+    println!("{:?}", default_nums);
+}
+#+END_SRC
+
+#+RESULTS:
+: [1, 2, 3]
+: 2
+: ['x', 'x', 'x', 'x', 'x']
+: ['a', 'b']
+: [1, 2, 4]
+* Control flow
+- The control blocks can be assigned to variables.
+  - [[https:tourofrust.com/20_en.html][example]]
+** if/else
+- =if=, =else=, and =else if=
+#+BEGIN_SRC rustic
+fn main() {
+    let num = 37i8;
+
+    if num > 60 {
+        println!("Passed with distinction : score => {}", num);
+    } else if num > 45 {
+        println!("Passed with fairness : score => {}", num);
+    } else {
+        println!("Just passed! : score => {}", num);
+    }
+}
+#+END_SRC
+
+#+RESULTS:
+: Just passed! : score => 37
+
+** loop
+- =loop= in rust kinda works like =while true=.
+#+BEGIN_SRC rustic
+fn main() {
+    let mut num = 10;
+    loop {
+        println!("{}", num);
+        num += 1;
+        if num == 15 {
+            break;
+        }
+    }
+
+    // loop can return values too
+    let mut idx = 0;
+    let v = loop {
+        idx += 1;
+        if idx == 10 {
+            break idx / 2;
+        }
+    };
+
+    println!("{}", v);
+}
+#+END_SRC
+
+#+RESULTS:
+: 10
+: 11
+: 12
+: 13
+: 14
+: 5
+
+** while
+#+BEGIN_SRC rustic
+fn main() {
+    let mut x = 0;
+    let mut sum = 0;
+    while x != 42 {
+        x += 1;
+        sum += x
+    }
+
+    println!("{}", sum)
+}
+#+END_SRC
+
+#+RESULTS:
+: 903
+
+** for
+- Iterator : An object that can give us the next item until there is none.
+- =..= operator creates an iterator that generates numbers from a start number up to but not including and end number.
+- =..== operator generates an iterator that includes the end number too.
+
+#+BEGIN_SRC rustic
+fn main() {
+    for i in 0..3 {
+        println!("{}", i);
+    }
+    println!("======");
+    for i in 0..=3 {
+        println!("{}", i);
+    }
+}
+#+END_SRC
+
+#+RESULTS:
+: 0
+: 1
+: 2
+: ======
+: 0
+: 1
+: 2
+: 3
+
+** match
+- =Switch= for rust.
+- Here the cases can have expressions too.
+- Default is specified by =_= keyword.
+#+BEGIN_SRC rustic
+fn main() {
+    let x = 42;
+
+    match x {
+        0 => {
+            println!("found zero");
+        }
+        // we can match against multiple values
+        1 | 2 => {
+            println!("found 1 or 2!");
+        }
+        // we can match against iterators
+        3..=9 => {
+            println!("found a number 3 to 9 inclusively");
+        }
+        // we can bind the matched number to a variable
+        matched_num @ 10..=100 => {
+            println!("found {} number between 10 to 100!", matched_num);
+        }
+        // this is the default match that must exist if not all cases are handled
+        _ => {
+            println!("found something else!");
+        }
+    }
+}
+#+END_SRC
+
+#+RESULTS:
+: found 42 number between 10 to 100!

@@ -9,3 +9,4 @@ This is the index of my notes. It contains all the major topics/categories that 
 - [[file:20200614013642-mac_os.org][Mac os]]
 - [[file:20200615181354-kubernetes.org][Kubernetes]]
 - [[file:20200617170955-drafts.org][Drafts]]
+- [[file:20200619203151-rust.org][Rust]]

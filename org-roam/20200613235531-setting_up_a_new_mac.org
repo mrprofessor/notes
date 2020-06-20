@@ -9,7 +9,7 @@
 - [X] Modify Caps Lock to escape/ctrl
 - [X] Remove unnecessary apps from the dock
 
-** Install applications [9/9]
+** Install applications [11/11]
 - [X] Install brave/chrome/firefox using safari
 - [X] Install Slack/Teams if needed.
 - [X] Install Spotify
@@ -19,9 +19,10 @@
 - [X] Install Zoom
 - [X] Install Discord
 - [X] Install google drive
-- [ ] Install night owl
+- [X] Install night owl
+- [X] Install 1password/lastpass
 
-** Programming [10/12]
+** Programming [11/12]
 - [X] Install Xcode or command line tools =(xcode-select --install)=
 - [X] Change hostname =(sudo scutil --set HostName mrprofessor)=
 - [X] Install [[github:mrprofessor/dotfiles][dotfiles]]
@@ -46,9 +47,9 @@
   - [X] Install a node lts version
 
 
-- [-] Go [1/2]
+- [X] Go [2/2]
   - [X] Install Go
-  - [ ] Install gopls
+  - [X] Install gopls
 
 
 - [X] Rust [1/1]

@@ -1,0 +1,5 @@
+#+title: Rust
+
+* Rust
+
+- A blazingly fast and memory efficient programming language. It's also termed as the programming language for next 50 years.
