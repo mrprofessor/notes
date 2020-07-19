@@ -1,0 +1,47 @@
+#+title: PC Build
+
+
+* PC Build specs
+
+** Mini
+
+| Component   | Model             | Link(s)               | Price |
+|-------------+-------------------+-----------------------+-------|
+| CPU         | Ryzen 3600        | [[https://www.amazon.in/dp/B07STGGQ18/ref=cm_sw_r_tw_dp_x_vfhfFbB24EDDW][Amazon]], [[https://mdcomputers.in/amd-hexa-core-ryzen-5-3600.html][mdcomputers]]   | 17100 |
+| GPU         | Nvidia 2070 Super | [[https://mdcomputers.in/zotac-geforce-rtx-2070-super-mini-zt-t20710e-10m.html][mdcomputers]],[[https://www.nvidia.com/en-in/geforce/graphics-cards/rtx-2070-super/][Nvidia]]    | 46500 |
+| RAM         | 16GB 3600mhz      | [[https://mdcomputers.in/g-skill-ripjaws-v-f4-3600c19s-16gvrb-f4-3600c19s-16gvrb.html][mdcomputers]]           |  8000 |
+| MotherBoard | B550I             | [[https://www.primeabgb.com/online-price-reviews-india/gigabyte-b550i-aorus-pro-ax-amd-b550-motherboard/][Primeabgb]],[[https://mdcomputers.in/gigabyte-m-itx-wi-fi-motherboard-b550i-aorus-pro-ax.html][mdcomputers]] | 17500 |
+| Case        | NZXT H1           | [[https://www.primeabgb.com/online-price-reviews-india/nzxt-h1-mini-itx-black-case-psu-incluing-aio-riser-card-ca-h16wr-bb-us/][Primeabgb]],[[https://www.pcstudio.in/product/h1/][pcstudio]]    | 32000 |
+| PSU         | NA                | NA                    |     0 |
+| Cooler      | NA                | NA                    |     0 |
+
+Total: 121100
+
+** Compact
+
+| Component   | Model             | Link(s)               | Price |
+|-------------+-------------------+-----------------------+-------|
+| CPU         | Ryzen 3600        | [[https://www.amazon.in/dp/B07STGGQ18/ref=cm_sw_r_tw_dp_x_vfhfFbB24EDDW][Amazon]], [[https://mdcomputers.in/amd-hexa-core-ryzen-5-3600.html][mdcomputers]]   | 17100 |
+| GPU         | Nvidia 2070 Super | [[https://mdcomputers.in/zotac-geforce-rtx-2070-super-mini-zt-t20710e-10m.html][mdcomputers]],[[https://www.nvidia.com/en-in/geforce/graphics-cards/rtx-2070-super/][Nvidia]]    | 46500 |
+| RAM         | 16GB 3600mhz      | [[https://mdcomputers.in/g-skill-ripjaws-v-f4-3600c19s-16gvrb-f4-3600c19s-16gvrb.html][mdcomputers]]           |  8000 |
+| MotherBoard | B550I             | [[https://www.primeabgb.com/online-price-reviews-india/gigabyte-b550i-aorus-pro-ax-amd-b550-motherboard/][Primeabgb]],[[https://mdcomputers.in/gigabyte-m-itx-wi-fi-motherboard-b550i-aorus-pro-ax.html][mdcomputers]] | 17500 |
+| Case        | NZXT H210         | [[https://www.amazon.in/dp/B07T94W9YS/ref=cm_sw_r_tw_dp_x_XmhfFbA038XR2][Amazon]]                |  9000 |
+| PSU         | NZXT C650         | [[https://www.primeabgb.com/online-price-reviews-india/nzxt-c-series-650-watt-80-gold-fully-modular-power-supply-np-c650m-uk/][Primeabgb]]             | 10000 |
+| Cooler      | Stock             | NA                    |     0 |
+
+Total: 108100
+
+
+** Regular
+
+| Component   | Model             | Link(s)             | Price |
+|-------------+-------------------+---------------------+-------|
+| CPU         | Ryzen 3600        | [[https://www.amazon.in/dp/B07STGGQ18/ref=cm_sw_r_tw_dp_x_vfhfFbB24EDDW][Amazon]], [[https://mdcomputers.in/amd-hexa-core-ryzen-5-3600.html][mdcomputers]] | 17100 |
+| GPU         | Nvidia 2070 Super | [[https://mdcomputers.in/zotac-geforce-rtx-2070-super-mini-zt-t20710e-10m.html][mdcomputers]],[[https://www.nvidia.com/en-in/geforce/graphics-cards/rtx-2070-super/][Nvidia]]  | 46500 |
+| RAM         | 16GB 3600mhz      | [[https://mdcomputers.in/g-skill-ripjaws-v-f4-3600c19s-16gvrb-f4-3600c19s-16gvrb.html][mdcomputers]]         |  8000 |
+| MotherBoard | B550              | [[https://www.primeabgb.com/buy-online-price-india/motherboards/?pa-motherboard-chipset=amd-b550][Primeabgb]]           | 15000 |
+| Case        | NZXT H510         | [[https://www.amazon.in/NZXT-H510-Management-Water-Cooling-Construction/dp/B07TC76671/ref=sr_1_2?crid=1FRKQ29RRLY5I&dchild=1&keywords=nzxt+h210&qid=1595175726&s=computers&sprefix=nzxt+h2%2Ccomputers%2C387&sr=1-2-catcorr][Amazon]]              |  7300 |
+| PSU         | NZXT C650         | [[https://www.primeabgb.com/online-price-reviews-india/nzxt-c-series-650-watt-80-gold-fully-modular-power-supply-np-c650m-uk/][Primeabgb]]           | 10000 |
+| Cooler      | Stock             | NA                  |     0 |
+
+Total: 103900
