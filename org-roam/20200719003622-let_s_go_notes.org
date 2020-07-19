@@ -1,0 +1,33 @@
+#+title: Let's Go notes
+
+- tags :: [[file:20200614231014-golang.org][GoLang]]
+
+* Let's go
+
+This note is my personalized brain dump from Let's GO book by Alex Edwards.
+
+** Notes
+*** Routing table
+
+| Method | pattern         | Handler       | Action                     |
+|--------+-----------------+---------------+----------------------------|
+| Any    | /               | home          | Display home page          |
+| Any    | /snippets?id=1  | showSnippet   | Display a specific snippet |
+| POST   | /snippet/create | createSnippet | Create a new snippet       |
+
+
+
+*** Customizing HTTP headers
+- Go always attempts to set the correct =Content-Type= Header automatically using the [[https://golang.org/pkg/net/http/#DetectContentType][http.DetectContentType]] method. The common problem here is that this function can not distinguish JSON from plain text. So each time the correct header must be set manually.
+
+  Example:
+  =w.Header().Set("Content-Type", "application/json")=
+
+- When we use the in-built methods =Set()=, =Add()= etc on the =Header= map, the header name will always be cannonicalized using the [[https://golang.org/pkg/net/textproto/#CanonicalMIMEHeaderKey][textproto.CanonicalMIMEHeaderKey()]] method.
+
+  To avoid this the headers can directly set to the Header map.
+  =w.Header()["X-XSS-Protection"] = []string{"1; mode=block"}=
+
+- =Del()= method doesn't delete the system generated Headers. To suppress these we need to manually assing =nil= to the respective header.
+
+  =w.Header()["Date"] = nil=
