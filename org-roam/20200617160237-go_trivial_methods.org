@@ -4,7 +4,7 @@
 
 * Trivial methods
 
-- Let's get to the point. Go is not a very feature packed language like [[file:20200614001521-python.org][Python]] or Java. For basic tasks like checking the existence of an element in an array or slice we need to write functions. This note will contain these small snippets that are commonly used and is hard to live without.
+- Let's get to the point. Go is not a very feature packed language like Python or Java. For basic tasks like checking the existence of an element in an array or slice we need to write functions. This note will contain these small snippets that are commonly used and is hard to live without.
 
 - Long term goal is to make a library if we have enough of these snippets. Something like [[https://lodash.com/][Lodash]].
 

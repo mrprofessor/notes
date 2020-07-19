@@ -22,8 +22,27 @@ By that time mostly I was using windows as it suited best for my gaming needs. M
 
 [Add an image of my raspberry pi 3]
 
-That was probably the first meaningful encounter with Vim. Then I went on to have a certification in [[][RHCSA]] where I had to do everything in Vim and I hated it the most. I couldn't copy paste the way I used to, didn't know how to move around different text files without exiting vim, had no idea of maintaining a permanet =.vimrc=. It literally made my life worse.
+That was probably the first meaningful encounter with Vim. Then I went on to have a certification in [[][RHCSA]] where I had to do everything in Vim and I hated it the most. I couldn't copy paste the way I used to, didn't know how to move around different text files without exiting vim, had no idea of maintaining a permanent =.vimrc=. It literally made my life worse.
 
 *** Real world
 
-After graduating I joined [[https://www.wipro.com/][Wipro]] as a software engineer traine and went through a rigorous bootcamp in system programming and guess what, as I had only access to a linux box most of time was spent writting code in vim.
+After graduating I joined [[https://www.wipro.com/][Wipro]] as a software engineer trainee. For then first 6 months I had to go through a rigorous bootcamp in system programming where we were given a linux box to run our C programs. Most of the time I spent writting code in Vim. I meant pure Vim, no plugins with 10 lines of [[https://github.com/mrprofessor/Vi-automation/blob/master/.vimrc][config]].
+
+The fact is all those times I had hated vim. I loved to edit on atom whenever possible, and that's simply because I didn't fully understand the editing power of vim.
+
+I kept using various editors like eclipse, atom, brackets and finally vs code before going back to vim in 2018. Vim was quite sufficient for my needs until now.
+
+[A screenshot of my vim workflow]
+
+**** Emacs
+
+So I have tried emacs multiple times in the past. Other than clicking on the configuration buttons and finally pressing =C-c C-x= I knew nothing about emacs. I felt the key bindings were pretty unusable for me. From the beginning I knew that emacs is quite powerful but I found vim more ergonomic and I was editing faster in vim.
+
+***** The first time
+Then after reading many blogs in reddit and watching couple of emacs videos, I planned to try emacs for the first time. I chose [[https://www.spacemacs.org/][Spacemacs]] and it was usable from the start. I enjoyed the vim keybindings, vs-code features like auto-completion and other goodies. Everything was good until I started tweaking it per my taste. The layers of Spacemacs were confusing for me as I didn't know any elisp and I couldn't simply copy snippets from blogs/stack-exchange and paste it in my config. Also I found Spacemacs quite bloated too. After weeks of tweaking I gave up and returned to vim.
+
+***** The second time
+This time I chose to do it the spartan way. I tried to build the emacs config all by myself. I kinda made it usable and after 3-4 days once again I went back to vim.
+
+***** The third time
+This time I found something that I have been looking for for a long time. It was [[https://github.com/hlissner/doom-emacs/][Doom]]. It was not as bumpy as any of those previous time only because of it's creator and an incredible community of Doom discord server.

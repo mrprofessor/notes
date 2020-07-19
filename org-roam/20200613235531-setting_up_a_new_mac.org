@@ -58,3 +58,14 @@
 ** Gaming [1/2]
 - [X] Install Steam
 - [ ] Install Minecraft
+
+** Mac tips and tricks
+*** Install brew packages from a file
+
+#+BEGIN_SRC bash
+
+while read line; do
+    brew install $line
+done < $HOME/.what-the-zsh/.brew-pkgs
+
+#+END_SRC
