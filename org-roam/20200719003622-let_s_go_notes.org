@@ -9,11 +9,12 @@ This note is my personalized brain dump from Let's GO book by Alex Edwards.
 ** Notes
 *** Routing table
 
-| Method | pattern         | Handler       | Action                     |
-|--------+-----------------+---------------+----------------------------|
-| Any    | /               | home          | Display home page          |
-| Any    | /snippets?id=1  | showSnippet   | Display a specific snippet |
-| POST   | /snippet/create | createSnippet | Create a new snippet       |
+| Method | pattern         | Handler         | Action                       |
+|--------+-----------------+-----------------+------------------------------|
+| Any    | /               | home            | Display home page            |
+| Any    | /snippets?id=1  | showSnippet     | Display a specific snippet   |
+| POST   | /snippet/create | createSnippet   | Create a new snippet         |
+| ANY    | /static         | http.FileServer | Serve a specific static file |
 
 
 
@@ -25,9 +26,113 @@ This note is my personalized brain dump from Let's GO book by Alex Edwards.
 
 - When we use the in-built methods =Set()=, =Add()= etc on the =Header= map, the header name will always be cannonicalized using the [[https://golang.org/pkg/net/textproto/#CanonicalMIMEHeaderKey][textproto.CanonicalMIMEHeaderKey()]] method.
 
-  To avoid this the headers can directly set to the Header map.
+  To avoid cannonicalization the headers can directly set to the Header map.
   =w.Header()["X-XSS-Protection"] = []string{"1; mode=block"}=
 
 - =Del()= method doesn't delete the system generated Headers. To suppress these we need to manually assing =nil= to the respective header.
 
   =w.Header()["Date"] = nil=
+
+*** Not found page
+- Go's servemux forwards all undefined routes to home(/) route. So to check and return =404 NOT FOUND= the following snippet can be used.
+
+#+BEGIN_EXAMPLE go
+func home(w http.ResponseWriter, r *http.Request) {
+    if r.URL.Path != "/" {
+        http.NotFound(w, r)
+        return
+    }
+    w.Write([]byte("Hello from Lets"))
+}
+#+END_EXAMPLE
+
+*** URL Query settings
+- The value of go parameters can be retrieved from =r.URL.Query().Get("param_name")= method.
+
+#+BEGIN_EXAMPLE go
+id, err := strconv.Atoi(r.URL.Query().Get("id")
+#+END_EXAMPLE
+
+*** Serving static files
+- To serve static files Go http package provides an API [[https://golang.org/pkg/net/http/#FileServer][http.FileServer]].
+
+#+BEGIN_EXAMPLE go
+fileServer := http.FileServer(http.Dir("./ui/static"))
+mux.Handle("/static/", http.StripPrefix("/static", fileServer))
+#+END_EXAMPLE
+
+- We can also serve single files in a router
+
+#+BEGIN_EXAMPLE go
+func downloadHandler(w http.ResponseWriter, r *http.Request) {
+    http.ServeFile(w, r, "./ui/static/file.zip")
+}
+#+END_EXAMPLE
+
+*** Command line args
+- It's possible and useful to use command line flags to get certain configurable data in order to run the application.
+
+#+BEGIN_EXAMPLE go
+
+// Provide the flag name, flag address and the help string as params
+addr := flag.String("addr", ":4000", "HTTP network address")
+// Parse the flag read the provided value and assign to the variable.
+flag.Parse()
+
+// Dereference the variable as the value returned from the flag.String
+// is a pointer to the function value, not the value itself.
+err := http.ListenAndServe(*addr, mux)
+
+#+END_EXAMPLE
+
+#+BEGIN_EXAMPLE bash
+# Run with the provided address
+go run cmd/web/* -addr 1313
+
+# Help
+go run cmd/web/* -help
+  -addr string
+        HTTP network address (default ":4000")
+#+END_EXAMPLE
+
+- We can also use pre-defined structs to store all the command line flags.
+
+#+BEGIN_EXAMPLE go
+
+type Config struct {
+    Addr string
+    StaticDir string
+}
+
+cfg := new(Config)
+flag.StringVar(&cfg.Addr, "addr", ":4000", "HTTP network address")
+flag.StringVar(&cfg.StaticDir, "static-dir", "./ui/static", "Path to static assets")
+flag.Parse()
+
+#+END_EXAMPLE
+
+*** Custom loggers
+- We can have different loggers for specific purpose instead of having one.
+
+#+BEGIN_EXAMPLE go
+
+infoLogger := log.New(os.Stdout, "INFO\t", log.Ldate|log.Ltime)
+errLogger := log.New(os.Stderr, "ERROR\t", log.Ldate|log.Ltime|log.Lshortfile)
+
+infoLogger.Println("Server started")
+errLogger.Println("Some really bad thing has happened")
+
+#+END_EXAMPLE
+
+- By default =http.Server= uses Go's standard logger to log messages. We can replace the default one with out custom logger.
+
+#+BEGIN_EXAMPLE go
+
+errLogger := log.New(os.Stderr, "ERROR\t", log.Ldate|log.Ltime)
+srv := &http.Server{
+    Addr: ":4000",
+    ErrorLog: errorLog,
+    Handler: mux,
+}
+
+#+END_EXAMPLE

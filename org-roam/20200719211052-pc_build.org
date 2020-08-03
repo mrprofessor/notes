@@ -45,3 +45,23 @@ Total: 108100
 | Cooler      | Stock             | NA                  |     0 |
 
 Total: 103900
+
+* Monitor
+
+- Benq EX2780Q - [[https://www.amazon.in/dp/B07X8HBHJP/ref=cm_sw_r_tw_dp_x_9HhfFbD2GCS1Y][Amazon]], [[https://mdcomputers.in/benq-27-inch-amd-freesync-gaming-ex2780q.html][mdcomputers]]
+
+
+* Test one
+
+
+| Component   | Model                  | Link(s)  | Price |
+|-------------+------------------------+----------+-------|
+| CPU         | Ryzen 3700x            | [[https://www.pcstudio.in/product/amd-ryzen-7-3700x-processor/][pcstudio]] | 28400 |
+| GPU         | Gigbyte 2070 Super     | [[https://mdcomputers.in/zotac-geforce-rtx-2070-super-mini-zt-t20710e-10m.html][pcstudio]] | 44000 |
+| RAM         | GSkill 16GB 3200mhz    | [[https://mdcomputers.in/g-skill-ripjaws-v-f4-3600c19s-16gvrb-f4-3600c19s-16gvrb.html][pcstudio]] |  8000 |
+| MotherBoard | Gigabyte X570 Gaming X | [[https://www.primeabgb.com/buy-online-price-india/motherboards/?pa-motherboard-chipset=amd-b550][pcstudio]] | 16999 |
+| Case        | NZXT H510              | [[https://www.pcstudio.in/product/nzxt-h510-compact-mid-tower-case-black-red-with-tempered-glass/][pcstudio]] |  6600 |
+| PSU         | NZXT C650              | [[https://www.pcstudio.in/product/gigabyte-b700h-smps-700-watt-80-plus-bronze-certification-psu-with-active-pfc/][pcstudio]] |  4750 |
+| Cooler      | NZXT kraken x52        | [[https://www.pcstudio.in/product/nzxt-kraken-x52-cam-powered-240mm-aio-cooler-with-rgb/][pcstudio]] | 10799 |
+
+Total: 119548

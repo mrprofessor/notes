@@ -7,7 +7,7 @@
 ** Week 1 (Functions and organization)
 ** Week 2 (Function types)
 *** First class values
-**** Variables can be declared with a function type.
+**** Variables can also be declared with a function type.
 
 #+BEGIN_SRC go :results output
 
@@ -184,10 +184,6 @@ func main() {
 
 }
 #+END_SRC
-
-#+RESULTS:
-: The maximum value:  64
-: The maximum value in the slice:  64
 **** Deferred function calls
 
 - A function call can be deferred until the surrounding function completes. Which means the call will happen after the surrounding function is out of the scope.
@@ -305,10 +301,6 @@ func main() {
 }
 
 #+END_SRC
-
-#+RESULTS:
-: Distance from {0 0} to {2 2} is: 2.828427
-: Distance from {0 0} to {0 4} is: 4.000000
 
 **** Encapsulation
 - Internal data can be protected from a programmer using our class.
