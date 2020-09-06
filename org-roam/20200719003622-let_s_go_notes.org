@@ -6,6 +6,8 @@
 
 This note is my personalized brain dump from Let's GO book by Alex Edwards.
 
+It's a great book though!
+
 ** Notes
 *** Routing table
 
@@ -136,3 +138,10 @@ srv := &http.Server{
 }
 
 #+END_EXAMPLE
+
+
+* Sidenote
+
+I love this book. Having said this I just want to clarify that this book is for people who want to build apis in golang and
+have experience building them in different other languages. Almost everything we need to build one is already available in
+Go's standard libraries.

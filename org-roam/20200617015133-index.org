@@ -11,3 +11,4 @@ This is the index of my notes. It contains all the major topics/categories that 
 - [[file:20200617170955-drafts.org][Drafts]]
 - [[file:20200619203151-rust.org][Rust]]
 - [[file:20200719211052-pc_build.org][PC Build]]
+- [[file:20200811164909-racker.org][Racker]]

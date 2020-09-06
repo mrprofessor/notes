@@ -64,10 +64,6 @@ func main() {
 
 #+END_SRC
 
-#+RESULTS:
-: true
-: false
-
 #+BEGIN_SRC go :results output
 
 import "fmt"

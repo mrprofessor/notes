@@ -1,0 +1,37 @@
+#+title: Racker
+
+** mongo deployments
+- Get clusters =or-leappad chart get -n mongodb-operator | jq .cluster=
+- Get chart id =or-leappad chart get -c 58097f54-e82b-4714-8bc3-******* -n mongodb-operator |  jq -r -C '.["id"]'=
+- Update the chart =or-leappad chart update -i 27642311-eefe-485d-ac34-********** -v 0.14.4-rc1=
+- push the chart =or-leappad workflowhelm upgrade -i  372297a6-4990-41c8-a28a-d232423423=
+
+** K8s
+
+*** Instance pods
+- List all the pods in a namespace for an instance =git master → kubectl --context staging0 get pods -n <Instance UUID>=
+
+*** Logs
+- Get logs for a resource ? =kubectl --context staging0 logs mongo-0 -c mongo-exporter -n 5e185151-f651-4e72-abca-6550bfcb813e=
+
+*** Secrets
+- List secrets =kubectl --context staging0 get secrets -n 5e185151-f651-4e72-abca-6550bfcb813e=
+- Get a secret =kubectl --context staging0  get secret mongod-mongo-monitor-creds -n 5e185151-f651-4e72-abca-6550bfcb813e -o yaml=
+- Read and decode a secret =kubectl --context staging0  get secret mongod-mongo-monitor-creds -n 5e185151-f651-4e72-abca-6550bfcb813e -o jsonpath= =="{.data.password}" | base64 --decode=
+
+
+* Issues
+
+1. When I set the status manually to =Create requested= one of the pods got crashed.
+    #+BEGIN_EXAMPLE shell
+        → kubectl --context scpycae8 get pods -n c48dd9c7-e961-4ea3-8dc1-c2d46c4e264b
+        NAME       READY   STATUS    RESTARTS   AGE
+        mongod-0   0/3     Pending   0          7s
+        mongod-1   0/3     Pending   0          7s
+        mongod-2   0/3     Pending   0          7s
+        → kubectl --context scpycae8 get pods -n c48dd9c7-e961-4ea3-8dc1-c2d46c4e264b
+        NAME       READY   STATUS             RESTARTS   AGE
+        mongod-0   2/3     CrashLoopBackOff   9          35m
+        mongod-1   3/3     Running            9          35m
+        mongod-2   3/3     Running            9          35m
+    #+END_EXAMPLE
