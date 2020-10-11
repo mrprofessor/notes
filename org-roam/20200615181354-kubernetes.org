@@ -1,5 +1,6 @@
 #+title: Kubernetes
 
 * Kubernetes
-
-- All things kubernetes
+:PROPERTIES:
+:ID:       4e13420c-d3b5-4aae-ac4e-ffe98d9232ca
+:END:

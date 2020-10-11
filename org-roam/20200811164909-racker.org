@@ -6,19 +6,29 @@
 - Update the chart =or-leappad chart update -i 27642311-eefe-485d-ac34-********** -v 0.14.4-rc1=
 - push the chart =or-leappad workflowhelm upgrade -i  372297a6-4990-41c8-a28a-d232423423=
 
+*** Check deployment job
+- Check deployment job =or-leappad job get -i ea4fb3c5-a74e-40e5-963f-123121141fds32 | jq=
+
 ** K8s
 
 *** Instance pods
-- List all the pods in a namespace for an instance =git master → kubectl --context staging0 get pods -n <Instance UUID>=
+- List all the pods in a namespace for an instance =kubectl --context staging0 get pods -n <Instance UUID>=
 
 *** Logs
-- Get logs for a resource ? =kubectl --context staging0 logs mongo-0 -c mongo-exporter -n 5e185151-f651-4e72-abca-6550bfcb813e=
+- Get logs for a resource ? =kubectl --context staging0 logs mongod-0 -c mongo-exporter -n 5e185151-f651-4e72-abca-6550bfcb813e=
 
 *** Secrets
-- List secrets =kubectl --context staging0 get secrets -n 5e185151-f651-4e72-abca-6550bfcb813e=
+- List secrets =kubectl --context staging0 get secrets -n 5e185151-f651-4e72-abca-2122321312=
 - Get a secret =kubectl --context staging0  get secret mongod-mongo-monitor-creds -n 5e185151-f651-4e72-abca-6550bfcb813e -o yaml=
 - Read and decode a secret =kubectl --context staging0  get secret mongod-mongo-monitor-creds -n 5e185151-f651-4e72-abca-6550bfcb813e -o jsonpath= =="{.data.password}" | base64 --decode=
 
+*** Exec
+- List all pods for a namespace =k get pods -n <namespace>=
+- Exec into the the pod =k -n <namespace> exec -it <pod> -- /bin/bash=
+
+*** Debug
+- Get deployment yaml =k get deployments apiv -n apiv -o yaml=
+- Debug init containers [[https://kubernetes.io/docs/tasks/debug-application-cluster/debug-init-containers/][debug-init-containers]]. [[file:20200926052902-til.org][TIL]]
 
 * Issues
 

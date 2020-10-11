@@ -1,0 +1,5 @@
+#+title: lokisay - Rust project
+
+- tags :: [[file:20200619203151-rust.org][Rust]]
+
+In this project I am building a CLI tool similar to =cowsay= for learning purposes only.

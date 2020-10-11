@@ -21,6 +21,7 @@
 - [X] Install google drive
 - [X] Install night owl
 - [X] Install 1password/lastpass
+- [X] Install FannyWidget
 
 ** Programming [11/12]
 - [X] Install Xcode or command line tools =(xcode-select --install)=
