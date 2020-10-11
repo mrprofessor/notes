@@ -1,0 +1,18 @@
+#+title: Shell exit status code
+
+- tags :: [[file:20200926052902-til.org][TIL]]
+
+ - Example of successful 0 status code
+    #+BEGIN_EXAMPLE shell
+    → hostname
+    matrix
+    → echo $?
+    0
+    #+END_EXAMPLE
+ - Unsuccessful status code
+    #+BEGIN_EXAMPLE shell
+    → random_command
+    zsh: command not found: random_command
+    → echo $?
+    127
+    #+END_EXAMPLE

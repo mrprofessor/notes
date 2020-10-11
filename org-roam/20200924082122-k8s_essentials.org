@@ -1,0 +1,204 @@
+#+title: k8s essentials
+
+- tags :: [[file:20200615181354-kubernetes.org][Kubernetes]]
+
+* K8s Essentials
+
+** What this is about?
+
+- A note that I can always come back to for a quick revision.
+
+** Concepts
+
+*** Containers
+- Containers wrap software in independent, portable packages, making it easy to quickly run software in a variety of environments.
+- These are a bit like virtual machines but they are smaller and start up faster.(They use os apis to operate instead of the real hardware)
+- Kubernetes doesn't come with a container runtime. So we need to choose from one of the supported containers(Docker, containerd etc)
+*** Nodes
+- Servers that actually run the containers are called nodes.
+- We can have control servers(controller/master node) and other worker nodes.
+- Kubernets cluster can have one or more control servers that manage and control clusters and host the =Kubernetes API=.
+- The worker nodes actually run the application.
+
+#+BEGIN_EXAMPLE shell
+kubectl get nodes # List nodes
+
+kubectl describe node <node_name>
+#+END_EXAMPLE
+
+*** Pods
+- A pod consists of one or more containers, storage resources and a unique IP address in the k8s cluster network.
+*** Container orchestration
+- Running multiple containers across different servers while maintaining a fail safe architecture can be defined as container orchestration.
+- With a orchestration tool many manual operations like deploying code changes to various containers, scaling up the service by adding new containers etc can be automated. Kubernetes and docker swarm are some reknowend orchestration tools out there.
+
+*** Kubeadm
+- It's a tool that performs the actons to get a cluster up and running. It cares only about bootstraping and not about provisioning machines.
+- This is a tool that automates a large portion of the process of setting up a cluster.
+
+*** Kubelet
+- A agent that manages the process of running containers at each node.
+- It serves as a middleman between the kubernetes api and docker.
+
+*** Kubectl
+- A command line tool we use to interact with the cluster.
+
+*** ControlPlane
+- A series of differnet services that form the kubernets master structure which allows the master to control the cluster.
+
+
+
+
+
+
+
+
+
+
+
+
+*** Networking in Kubernetes
+- A kubernetes cluster has a =virtual network= across the whole cluster. Every pod on the cluster has a unique IP address, and communicate with any other pod in the cluster, even if that other pod is running on a different node.
+
+** Misc
+*** Install docker in a playground
+
+#+BEGIN_EXAMPLE shell
+
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+
+sudo add-apt-repository \
+   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+   $(lsb_release -cs) \
+   stable"
+
+sudo apt-get update
+
+sudo apt-get install -y docker-ce=18.06.1~ce~3-0~ubuntu
+
+sudo apt-mark hold docker-ce
+
+docker version
+#+END_EXAMPLE
+*** Install kubernetes in a playground
+
+#+BEGIN_EXAMPLE shell
+curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+
+cat << EOF | sudo tee /etc/apt/sources.list.d/kubernetes.list
+deb https://apt.kubernetes.io/ kubernetes-xenial main
+EOF
+
+sudo apt-get update
+
+sudo apt-get install -y kubelet=1.15.7-00 kubeadm=1.15.7-00 kubectl=1.15.7-00
+
+sudo apt-mark hold kubelet kubeadm kubectl
+
+kubeadm version
+#+END_EXAMPLE
+
+*** Bootstrap the kubernetes cluster
+
+
+- On the master node initialize the cluster
+#+BEGIN_EXAMPLE shell
+sudo kubeadm init --pod-network-cidr=10.244.0.0/16
+#+END_EXAMPLE
+
+- Once done setup the local kubeconfig(This commands will be in the output of the above command)
+#+BEGIN_EXAMPLE shell
+mkdir -p $HOME/.kube
+sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+sudo chown $(id -u):$(id -g) $HOME/.kube/config
+#+END_EXAMPLE
+
+- Verify the kubectl is working
+#+BEGIN_EXAMPLE shell
+kubectl version
+
+# We should get both server client version in the output.
+#+END_EXAMPLE
+
+- We should get a kubeadm command from the =kubeadm init= output above. This command can be used on the nodes to join as a slave node in the cluster.
+#+BEGIN_EXAMPLE shell
+sudo kubeadm join $some_ip:6443 --token $some_token --discovery-token-ca-cert-hash $some_hash
+#+END_EXAMPLE
+
+- List all the nodes
+#+BEGIN_EXAMPLE shell
+kubectl get nodes
+
+NAME                        STATUS     ROLES    AGE   VERSION
+hotcake1c.mylabserver.com   NotReady   master   96m   v1.15.7
+hotcake2c.mylabserver.com   NotReady   <none>   91m   v1.15.7
+hotcake3c.mylabserver.com   NotReady   <none>   91m   v1.15.7
+#+END_EXAMPLE
+
+*** Networking in the cluster
+- We need to turn on net.bridge.bridge-nf-call-iptables on all nodes
+#+BEGIN_EXAMPLE shell
+
+echo "net.bridge.bridge-nf-call-iptables=1" | sudo tee -a /etc/sysctl.conf
+sudo sysctl -p
+
+#+END_EXAMPLE
+
+- We need to install [[https://github.com/coreos/flannel/][Flannel]] on the master node for networking.
+#+BEGIN_EXAMPLE shell
+kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/bc79dd1505b0c8681ece4de4c0d86c5cd2643275/Documentation/kube-flannel.yml
+#+END_EXAMPLE
+
+- Check kubernetes node status
+#+BEGIN_EXAMPLE shell
+kubectl get nodes
+->
+NAME                        STATUS   ROLES    AGE    VERSION
+hotcake1c.mylabserver.com   Ready    master   119m   v1.15.7
+hotcake2c.mylabserver.com   Ready    <none>   114m   v1.15.7
+hotcake3c.mylabserver.com   Ready    <none>   114m   v1.15.7
+
+# The status of each node is ready now
+#+END_EXAMPLE
+
+- Check whether the flannel pods are running.
+#+BEGIN_EXAMPLE shell
+kubectl get pods -n kube-system
+#+END_EXAMPLE
+
+
+*** Basic pod creation
+- Create a basic pod
+#+BEGIN_EXAMPLE shell
+
+cat << EOF | kubectl create -f -
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+EOF
+
+# Once created check with
+kubectl get pods
+
+#+END_EXAMPLE
+
+- Describe pod
+#+BEGIN_EXAMPLE shell
+kubectl describe pod nginx
+#+END_EXAMPLE
+
+- Get IP address of your pods
+#+BEGIN_EXAMPLE shell
+kubectl get pods -o wide
+#+END_EXAMPLE
+
+
+- Delete the pod
+#+BEGIN_EXAMPLE shell
+kubectl delete pod nginx
+#+END_EXAMPLE

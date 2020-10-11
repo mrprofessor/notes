@@ -1,0 +1,4 @@
+#+title: Linux academy k8s
+
+
+- tags :: [[file:20200615181354-kubernetes.org][Kubernetes]]
