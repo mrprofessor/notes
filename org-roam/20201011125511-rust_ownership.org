@@ -1,0 +1,135 @@
+#+title: Rust ownership
+
+- tags :: [[file:20200619203151-rust.org][Rust]]
+
+** Ownership
+- Instantiating a type and binding it to a variable name creates creates a memory resource that the Rust compiler will validate through its whole lifetime. *The bound variable is called the resource's owner*.
+- Since Rust doesn't have a garbage collector, It uses the end of scope to deconstruct and deallocate the resouce.
+- This is also called [[https://en.wikipedia.org/wiki/Resource_acquisition_is_initialization][Resource Aquisition Is Initialization(RAII)]] in C++.
+- When a Struct is dropped the Struct itself is dropped first, then its children are dropped.
+
+#+BEGIN_SRC rust
+fn main() {
+    // Instantiate a struct(vector macro) and bind to foo variable which
+    // Created a memory resource.
+    // Here foo is the owner
+    let foo = vec![2, 3, 7, 11, 13];
+
+    // foo is dropped here
+}
+#+END_SRC
+
+** Moving ownership
+- When an owner(bound variable here) is passed as an argument to a function, The ownership is moved to the function parameter.
+- After a move the variable in the original function can't be used anymore.
+- Ownership can also be returned from a function
+
+#+BEGIN_SRC rust
+fn move_ownership(v: Vec<i32>) {
+    for value in v {
+        println!("{}", value);
+    }
+}
+
+fn return_ownership(v: Vec<i32>) -> Vec<i32> {
+    // Return without doing anything.
+    return v;
+}
+
+fn main() {
+    // foo is the owner
+    let foo = vec![2, 3, 7];
+    // Move and return from return_ownership
+    let returned_foo = return_ownership(foo);
+    // Move owenership of foo to move_ownership function
+    move_ownership(returned_foo)
+    // Mow foo can't be used anymore in main function
+}
+#+END_SRC
+
+- Another example:
+
+#+BEGIN_SRC rust
+fn move_ownership_sum(v: Vec<i32>) -> i32 {
+    let mut sum = 0;
+    for value in v {
+        sum += value;
+    }
+    return sum;
+}
+
+fn main() {
+    let values = vec![2, 3, 7];
+    let sum = move_ownership_sum(values);
+    // println!("Sum of values {:?} is {}", values, sum);
+    println!("Sum is {}", sum)
+}
+#+END_SRC
+
+#+RESULTS:
+: Sum is 12
+
+** Borrow ownership
+*** Borrow immutable references
+- References allow us to borrow access to a resource with a =&= operator.
+
+#+BEGIN_SRC rust
+fn borrow_sum(v: &Vec<i32>) -> i32 {
+    let mut sum = 0;
+    for value in v {
+        sum += value;
+    }
+    // Error mutating unmutable data
+    // v[0] = 0;
+    return sum;
+}
+
+fn main() {
+    let values = vec![2, 3, 7];
+    let sum = borrow_sum(&values);
+    println!("Sum of values {:?} is {}", values, sum);
+}
+#+END_SRC
+
+*** Borrow mutable references
+- With mutable references we can modify the borrowed data.
+
+#+BEGIN_SRC rust
+fn cap_maximum_value_borrow(max: i32, v: &mut Vec<i32>) {
+    for index in 0..v.len() {
+        if v[index] > max {
+            v[index] = max
+        }
+    }
+}
+
+fn main() {
+    let mut values = vec![2, 3, 7, 11, 13, 17, 19];
+    cap_maximum_value_borrow(7, &mut values);
+    println!("{:?}", values)
+}
+#+END_SRC
+
+#+RESULTS:
+: [2, 3, 7, 7, 7, 7, 7]
+
+**** NOTE
+- A data can't be borrowed both as mutable and immutable at the same time.
+- It must be either borrowed once as a mutable or borrowed multiple times as immutable. Changed since Rust 2018.
+  [[https://doc.rust-lang.org/edition-guide/rust-2018/ownership-and-lifetimes/non-lexical-lifetimes.html][Non-lexical lifetimes]]
+
+#+BEGIN_SRC rust
+fn main() {
+    let mut values = vec![2, 3, 7];
+
+    // Immutable borrows
+    let a = &values;
+    let b = &values;
+
+    // Implicit mutable borrow
+    values[2] = 1;
+    println!("{:?}", values);
+    println!("{:?}", a); // ERROR mutable borrow used here.
+}
+#+END_SRC
+
