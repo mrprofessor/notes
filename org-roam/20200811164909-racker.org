@@ -30,6 +30,9 @@
 - Get deployment yaml =k get deployments apiv -n apiv -o yaml=
 - Debug init containers [[https://kubernetes.io/docs/tasks/debug-application-cluster/debug-init-containers/][debug-init-containers]]. [[file:20200926052902-til.org][TIL]]
 
+*** Run a job
+- Run a job =kubectl --context infrastg --namespace apiv create job --from=cronjob.batch/apiv-stripe-redeemer apiv-stripe-redeemer-run-random=
+
 * Issues
 
 1. When I set the status manually to =Create requested= one of the pods got crashed.

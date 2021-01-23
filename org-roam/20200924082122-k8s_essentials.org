@@ -30,7 +30,7 @@ kubectl describe node <node_name>
 - A pod consists of one or more containers, storage resources and a unique IP address in the k8s cluster network.
 *** Container orchestration
 - Running multiple containers across different servers while maintaining a fail safe architecture can be defined as container orchestration.
-- With a orchestration tool many manual operations like deploying code changes to various containers, scaling up the service by adding new containers etc can be automated. Kubernetes and docker swarm are some reknowend orchestration tools out there.
+- With a orchestration tool many manual operations like deploying code changes to various containers, scaling up the service by adding new containers etc can be automated. Kubernetes and docker swarm are some renowend orchestration tools out there.
 
 *** Kubeadm
 - It's a tool that performs the actons to get a cluster up and running. It cares only about bootstraping and not about provisioning machines.

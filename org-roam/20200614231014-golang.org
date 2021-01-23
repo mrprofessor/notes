@@ -1,5 +1,3 @@
 #+title: GoLang
 
 * Go programming language
-
-- As I have move to rackspace, here primarily I have to work on Go lang.

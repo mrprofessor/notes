@@ -3,50 +3,23 @@
 
 * Specs
 
-** Mini
 
-| Component   | Model            | Link(s)               | Price |
-|-------------+------------------+-----------------------+-------|
-| CPU         | Ryzen 3600       | [[https://www.amazon.in/dp/B07STGGQ18/ref=cm_sw_r_tw_dp_x_vfhfFbB24EDDW][Amazon]], [[https://mdcomputers.in/amd-hexa-core-ryzen-5-3600.html][mdcomputers]]   | 18500 |
-| GPU         | Nvidia 3080      | [[https://mdcomputers.in/zotac-geforce-rtx-2070-super-mini-zt-t20710e-10m.html][mdcomputers]],[[https://www.nvidia.com/en-in/geforce/buy/][Nvidia]]    | 71000 |
-| RAM         | 16GB 3200mhz * 2 | [[https://www.amazon.in/gp/product/B07W8ZDDKT/ref=ox_sc_act_title_1?smid=A1NDZY44BCNIQJ&psc=1][Amazon]]                | 11000 |
-| MotherBoard | B550I            | [[https://www.primeabgb.com/online-price-reviews-india/gigabyte-b550i-aorus-pro-ax-amd-b550-motherboard/][Primeabgb]],[[https://mdcomputers.in/gigabyte-m-itx-wi-fi-motherboard-b550i-aorus-pro-ax.html][mdcomputers]] | 17500 |
-| Case        | NZXT H1          | [[https://www.primeabgb.com/online-price-reviews-india/nzxt-h1-mini-itx-black-case-psu-incluing-aio-riser-card-ca-h16wr-bb-us/][Primeabgb]],[[https://www.pcstudio.in/product/h1/][pcstudio]]    | 35000 |
-| Storage     | 1 tb m.2 nvme    |                       | 10000 |
-| PSU         | NA               | NA                    |     0 |
-| Cooler      | NA               | NA                    |     0 |
-
-Total: 163000
-
-** Regular
+** My Build
 
 | Component   | Model            | Link(s)             | Price |
 |-------------+------------------+---------------------+-------|
-| CPU         | Ryzen 3600       | [[https://www.amazon.in/dp/B07STGGQ18/ref=cm_sw_r_tw_dp_x_vfhfFbB24EDDW][Amazon]], [[https://mdcomputers.in/amd-hexa-core-ryzen-5-3600.html][mdcomputers]] | 18500 |
-| GPU         | Nvidia 3080      | [[https://mdcomputers.in/zotac-geforce-rtx-2070-super-mini-zt-t20710e-10m.html][mdcomputers]],[[https://www.nvidia.com/en-in/geforce/buy/][Nvidia]]  | 71000 |
-| RAM         | 16GB 3200mhz * 2 | [[https://www.amazon.in/gp/product/B07W8ZDDKT/ref=ox_sc_act_title_1?smid=A1NDZY44BCNIQJ&psc=1][Amazon]]              | 11000 |
-| MotherBoard | x570             | [[https://mdcomputers.in/gigabyte-x570-gaming-x.html][MDComputers]]         | 18000 |
-| Case        | NZXT H510        | [[https://www.amazon.in/NZXT-H510-Management-Water-Cooling-Construction/dp/B07TC76671/ref=sr_1_2?crid=1FRKQ29RRLY5I&dchild=1&keywords=nzxt+h210&qid=1595175726&s=computers&sprefix=nzxt+h2%2Ccomputers%2C387&sr=1-2-catcorr][Amazon]]              |  7300 |
-| PSU         | NZXT C750        | [[https://mdcomputers.in/gigabyte-aorus-p750w-80-plus-gold-fully-modular-gp-ap750gm.html][MDComputer]]          | 10700 |
-| Storage     | 1 tb m.2 nvme    |                     | 10000 |
-| Cooler      | Stock            | NA                  |     0 |
+| CPU         | Ryzen 5600x      | [[https://www.thevaluestore.in/account-order-info?order_id=4460][TheValueStore order]] | 26990 |
+| GPU         | Nvidia 3080      | [[https://mdcomputers.in/zotac-geforce-rtx-2070-super-mini-zt-t20710e-10m.html][mdcomputers]],[[https://www.nvidia.com/en-in/geforce/buy/][Nvidia]]  | 44500 |
+| RAM         | 16GB 3200mhz * 2 | [[https://www.amazon.in/gp/your-account/order-details/ref=ppx_yo_dt_b_order_details_o01?ie=UTF8&orderID=405-2201082-8890711][Amazon order]]        |  9800 |
+| MotherBoard | B550I            | [[https://www.thevaluestore.in/account-order-info?order_id=3641][TheValueStore order]] | 15000 |
+| Case        | NZXT H1          | [[https://www.bluechipcorporation.in/detail/NZXT+Cabinet+H1.html][BluechipCorporation]] | 34000 |
+| Storage     | 1 tb m.2 nvme    | [[https://www.amazon.in/gp/your-account/order-details/ref=ppx_yo_dt_b_order_details_o00?ie=UTF8&orderID=405-6665995-7471509][Amazon order]]        |  7500 |
+| PSU         | NA               | NA                  |     0 |
+| Cooler      | NA               | NA                  |     0 |
 
-Total: 146500
+Total: 137790
 
-** Compact
 
-| Component   | Model            | Link(s)               | Price |
-|-------------+------------------+-----------------------+-------|
-| CPU         | Ryzen 3600       | [[https://www.amazon.in/dp/B07STGGQ18/ref=cm_sw_r_tw_dp_x_vfhfFbB24EDDW][Amazon]], [[https://mdcomputers.in/amd-hexa-core-ryzen-5-3600.html][mdcomputers]]   | 18500 |
-| GPU         | Nvidia 3080      | [[https://mdcomputers.in/zotac-geforce-rtx-2070-super-mini-zt-t20710e-10m.html][mdcomputers]],[[https://www.nvidia.com/en-in/geforce/buy/][Nvidia]]    | 71000 |
-| RAM         | 16GB 3200mhz * 2 | [[https://www.amazon.in/gp/product/B07W8ZDDKT/ref=ox_sc_act_title_1?smid=A1NDZY44BCNIQJ&psc=1][Amazon]]                | 11000 |
-| MotherBoard | B550I            | [[https://www.primeabgb.com/online-price-reviews-india/gigabyte-b550i-aorus-pro-ax-amd-b550-motherboard/][Primeabgb]],[[https://mdcomputers.in/gigabyte-m-itx-wi-fi-motherboard-b550i-aorus-pro-ax.html][mdcomputers]] | 17500 |
-| Case        | CM NR200P        |                       | 10000 |
-| Storage     | 1 tb m.2 nvme    |                       | 10000 |
-| PSU         | NA               | [[https://elitehubs.com/product/corsair-smps-sf750-80-plus-power-supply/][EliteHub]]              | 15000 |
-| Cooler      | Stock            | NA                    |     0 |
-
-Total: 153000
 * Monitors
 
 - BenQ EX2780Q 144Hz   - [[https://www.amazon.in/dp/B07X8HBHJP/ref=cm_sw_r_tw_dp_x_9HhfFbD2GCS1Y][Amazon]], [[https://mdcomputers.in/benq-27-inch-amd-freesync-gaming-ex2780q.html][mdcomputers]]
@@ -60,8 +33,6 @@ I love the idea of running mac os on my own hardware. I absoultely love mac os b
 Also I would like to go with ryzen processors and Nvidia gpus. That won't work with hackintosh as it doesn't support the latest Nvidia GPUs. So either I have to go with something like
 1. ryzen cpu + AMD graphics
 2. intel cpu + AMD graphics
-3. intel cpu(Integrated graphics) + whatever gpu(for windows)
+3. 9th gen intel cpu(Integrated graphics) + whatever gpu(for windows)
 
-That also makes me rethink whether I wan't to invest in expesive hardware that may or may not suppport mac os fully.
-
-
+That also makes me rethink whether I wan't to invest in expesive hardware that may or may not fully support mac os.

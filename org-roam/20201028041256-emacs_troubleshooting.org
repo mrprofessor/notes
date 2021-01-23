@@ -1,0 +1,6 @@
+#+title: Emacs troubleshooting
+
+- tags::[[file:20201028041311-emacs.org][Emacs]]
+
+** Random tricks
+- Refresh file cache =SPC p i= or =SPC u SPC f F=
