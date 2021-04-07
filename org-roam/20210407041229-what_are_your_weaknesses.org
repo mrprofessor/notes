@@ -1,0 +1,18 @@
+#+title: What are your weaknesses?
+
+- tags :: [[file:20210407035010-interviews.org][Interviews]]
+
+> Copied from [[https://goodreads.com/book/show/10673823-the-google-resume][The google resume]]
+
+Many years ago, someone started a vicious rumor that your weaknesses should be strengths in disguise: “I think one of my biggest weaknesses is that I work too hard. I just don’t know when to stop!” No, really, stop.
+
+Weaknesses should be genuine weaknesses, but not so bad that they’re damning. My personal (and honest) answer for this question when I am interviewed is the following:
+
+#+begin_example
+
+I think I have three main weaknesses. First, I sometimes lack an attention to detail. While this is somewhat good in that it enables me to execute quickly, it also means that I can make careless mistakes. I have learned that I need to double or triple check important work before submitting. Second, I am a very quantitative person, and sometimes I can lose sight of the personal aspect of a decision—whom it impacts and why. I’ve learned the hard way that I need to consider who all the stakeholders are in a decision, and how they’ll react. Third, I am too critical of my own ideas and sometimes those of others. I’ve largely masked this by focusing on offering positive feedback, but I know I have some room to improve my internal reactions.
+#+end_example
+
+No one would claim that my weaknesses are good things, but would they disqualify me from a position? Probably not, though it does depend on the position (a motivational coach is probably out of the question for me!).
+
+In your weaknesses, be sure to minimize them by showing how you’re working on improving them, or how you’ve managed to negate the issues (such as I do by double checking my work). Additionally, make sure you can back up your weaknesses with con- crete examples. If you can’t, they probably aren’t weaknesses.

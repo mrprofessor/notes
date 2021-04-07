@@ -1,0 +1,3 @@
+#+title: Why Macs are the best dev machines
+
+- tags :: [[file:20200617170955-drafts.org][Drafts]], [[file:20200614013642-mac_os.org][Mac os]]

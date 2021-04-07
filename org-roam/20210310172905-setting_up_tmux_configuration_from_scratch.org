@@ -1,0 +1,79 @@
+#+title: Setting up tmux configuration from scratch
+
+- tags :: [[file:20200617170955-drafts.org][Drafts]]
+
+** Tmux (What it is?)
+
+Tmux is a terminal multiplexer a program that manages terminal windows.
+
+With Tmux we can switch between multiple applications with ease, and we can have multiple instances of tmux running in the background too. Tmux sessions are persistent, so we can disconnect from the session and the applications will continue to run in the background which is quite handy in case of timing-out or disconnecting SSH connections.
+
+
+#+BEGIN_QUOTE
+This won't cover installation so here you go -> https://github.com/tmux/tmux/wiki/Installing
+
+And some basic concepts -> https://github.com/tmux/tmux/wiki/Getting-Started
+#+END_QUOTE
+
+** Tmux configuration
+
+Create a =~/.tmux.conf= file in your home directory. This will be the configuration file for your setup.
+
+*** General tweaks
+
+If your underlying terminal emulator has =XTERM-256= support then you can add 256 colors support to tmux.
+
+#+begin_src tmux
+set -g default-terminal "tmux-256color"
+#+end_src
+
+By default tmux windows start with number =0=. We could start numbering with =1=.
+
+#+begin_src tmux
+set -g base-index 1
+#+end_src
+
+Set the escape time to 0 for faster key repetition. Tmux generally waits for a certain time after an escape is input to determine if it is a part of a function or meta key sequences. The default is 500 milliseconds.
+
+#+begin_src tmux
+set -s escape-time 0
+#+end_src
+
+By default the mouse support for tmux is set to =off=.
+
+#+begin_src tmux
+set -g mouse on
+#+end_src
+
+
+*** Keybindings
+
+By default tmux uses =ctrl-b= (=C-b=) as the prefix key. Personally I found this to be a bit less ergonomic for my taste. Let's change that to =C-a=.
+
+#+begin_src tmux
+set-option -g prefix C-a
+unbind-key C-b
+bind-key C-a send-prefix
+#+end_src
+
+Being a VIM(EVIL) user I have trained myself to use =h=, =j=, =k=, =l= for left, down, up and right movements respectively.
+
+#+begin_src tmux
+bind h select-pane -L
+bind j select-pane -D
+bind k select-pane -U
+bind l select-pane -R
+#+end_src
+
+If you constanlty tweak your dotfiles like I do, then hot-reloading tmux without restarting it can be really handy.
+
+#+begin_src tmux
+bind r source-file ~/.tmux.conf
+#+end_src
+
+Once you save your =~/.tmux.conf= file, you could use =C-a r= to reload tmux.
+
+** Customize Status Bar (TODO)
+** Customize Active Pane (TODO)
+** VI mode (TODO)
+** Miscellaneous (TODO)

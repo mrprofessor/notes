@@ -5,10 +5,12 @@
 This is the index of my notes. It contains all the major topics/categories that I write stuff for. These notes are written for me and only me.
 
 - [[file:20200614001521-python.org][Python]]
-- [[file:20200614231014-golang.org][GoLang]]
+- [[file:20200614231014-go.org][Go]]
 - [[file:20200614013642-mac_os.org][Mac os]]
 - [[file:20200615181354-kubernetes.org][Kubernetes]]
 - [[file:20200617170955-drafts.org][Drafts]]
 - [[file:20200619203151-rust.org][Rust]]
 - [[file:20200719211052-pc_build.org][PC Build]]
 - [[file:20200811164909-racker.org][Racker]]
+- [[file:20200617170955-drafts.org][Drafts]]
+- [[file:20210407035010-interviews.org][Interviews]]

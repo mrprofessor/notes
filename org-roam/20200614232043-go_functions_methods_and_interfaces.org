@@ -1,6 +1,6 @@
 #+title: Go - Functions, methods and interfaces
 
-- tags :: [[file:20200614231014-golang.org][GoLang]]
+- tags :: [[file:20200614231014-go.org][GoLang]]
 
 * Functions
 

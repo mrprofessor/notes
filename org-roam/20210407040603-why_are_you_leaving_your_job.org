@@ -1,0 +1,20 @@
+#+title: Why are you leaving your job?
+
+- tags :: [[file:20210407035010-interviews.org][Interviews]]
+
+> Copied from [[https://goodreads.com/book/show/10673823-the-google-resume][The google resume]]
+
+One of my standard opening questions was, “What brings you here today?” A candidate could answer many ways. They could explain why they were leaving their current job. They could tell me why the new position was exciting to them. Or the more literal candi- date could joke and say “a car,” as one candidate, in fact, did.
+
+One unfortunate candidate took the opportunity to rant about her current position. Her work was boring and tedious. Her teammates were too negative and critical. Her boss was sexist and wouldn’t promote her. She wasn’t learning enough. On and on and on. I dutifully noted her reasons and progressed with more technical questions, which she breezed through. When we discussed her interviewing feedback later, we discovered that all her inter- viewers noted the same negativity.
+
+Perhaps she had an unfortunate position with her team, but her willingness to flaunt such hostility showed a lack of professionalism and suggested a general negative demeanor. We rejected her—she could have been toxic to the culture.
+
+No matter how bad your situation is, stay positive. Focus on what you’re excited about doing at this new position:
+
+#+begin_example
+
+My current position has been great in certain ways. It’s taught me a lot about communication, negotiations, and how to manage many clients at once. However, new client acquisition is so highly prioritized at my com- pany that I don’t have the opportunity to develop more lasting relation- ships with clients. I’m looking for an opportunity where I can do this.
+#+end_example
+
+Assuming that the new position matches this requirement, this would be an excellent response.

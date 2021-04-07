@@ -1,0 +1,24 @@
+#+title: Following up with Your recruiter
+
+- tags :: [[file:20210407035010-interviews.org][Interviews]]
+
+- A simple note
+
+#+begin_example text
+    Hi YYY,
+        I wanted to thank you for helping coordinate my interview last week, and I also wanted to check in about my interview status. Do you know when I could expect an update?
+
+    Thank you!
+    XXX
+#+end_example
+
+- If there is no response, e-mail again after 3 days with a short note:
+
+
+#+begin_example
+    Hi YYY,
+        I just wanted to check in again. I understand you’re probably busy with other work, so I’ll probably just give you a call tomorrow or the next day if I haven’t heard back from you before then.
+
+    Thanks!
+    XXX
+#+end_example

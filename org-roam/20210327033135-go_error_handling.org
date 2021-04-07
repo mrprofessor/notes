@@ -1,0 +1,148 @@
+#+title: Go - Error handling
+
+- tags :: [[file:20200614231014-go.org][GoLang]]
+
+** Learning Notes
+
+Go always got a mixed opinion for it's error handling, cosidering most of us came from Java/Python/C#/C++ background and it's kinda annoying to write an =If= block everytime you call a function that returns an error.
+
+#+begin_example go
+
+// Sample function declaration.
+func doSomething(s *string) (string, error)
+
+// Call the function
+_, err := doSomething("Hello")
+
+// Now handle the error
+if err != nil {
+// Error happened
+}
+#+end_example
+
+Here I wanted to document some scenarios I faced, while playing with it.
+
+#+begin_example go
+
+func checkSSL(url string) {
+    // By default HTTPS connections use port 443
+    conn, err := tls.Dial("tcp", url+":443", nil)
+    if err != nil {
+        fmt.Println(err)
+    }
+}
+
+checkSSL("awesome.af")
+// x509: certificate has expired or is not yet valid: current time 2021-03-27T04:10:16+05:30 is after 2018-06-24T16:53:03Z
+
+checkSSL("awesome.af1")
+// dial tcp: lookup awesome.af1: no such host
+
+
+#+end_example
+
+Even these errors are enough to understand for a developer, they are not so much for the end user. So here I wanted to print a legible and helpful error message instead of default ones.
+
+Before we begin, to print an the details about an error use
+
+#+begin_example go
+fmt.Printf("%#v\n", err)
+// x509.CertificateInvalidError{Cert:(*x509.Certificate)(0c00015e000), Reason:1, Detail:"current time 2021-03-27T05:09:34+05:30 is after 2015-04-12T23:59:59Z"}
+#+end_example
+
+We see that it's type is =x509.CertificateInvalidError=
+
+#+begin_example go
+
+url := "expired.badssl.com"
+_, err := tls.Dial("tcp", url+":443", nil)
+// Before go 1.13
+if e, ok := err.(x509.CertificateInvalidError); ok && e.Reason == x509.Expired {
+    fmt.Println("Certificate has expired or is not yet valid")
+} else {
+    fmt.Println(err)
+}
+
+// After go 1.13
+import "errors"
+
+var certErr = x509.CertificateInvalidError{}
+if errors.As(err, &certErr) && certErr.Reason == x509.Expired {
+    fmt.Println("Certificate has expired or is not yet valid")
+}
+
+// OR we can do something lilke
+var cErr x509.CertificateInvalidError
+if errors.As(err, &cErr) && certErr.Reason == x509.Expired {
+    fmt.Println("Certificate has expired or is not yet valid")
+}
+
+#+end_example
+
+Again this time for DNSErr
+
+#+begin_example go
+fmt.Printf("%#v\n", err)
+// &net.OpError{Op:"dial", Net:"tcp", Source:net.Addr(nil), Addr:net.Addr(nil), Err:(*net.DNSError)(0xc000287140)}
+#+end_example
+
+
+We can see that =DNSError= [[https://github.com/golang/go/blob/master/src/net/net.go][Unwraps]] the error too.
+
+#+begin_example go
+
+_, err := tls.Dial("tcp", url+":443", nil)
+
+var dnsErr *net.DNSError
+var opErr *net.OpError
+if errors.As(err, &opErr) && errors.As(err, &dnsErr) {   // Or just check DNSError
+    fmt.Println("No host")
+}
+
+// OR use unwrap method
+if errors.As(err, new(*net.DNSError)) {
+    fmt.Println("No host")
+}
+
+#+end_example
+
+ SO error handilng can be bit verbose, but it has clarity.
+
+** Create a custom error by implementing Error interface.
+
+- An example of a custom error
+#+begin_src go
+package main
+
+import (
+    "fmt"
+)
+
+type CustomError struct {
+    Reason string
+}
+
+func (c *CustomError) Error() string {
+    return c.Reason
+}
+
+func main() {
+
+    x, err := doSomething("")
+
+    fmt.Println(x, err)
+    fmt.Printf("%#v\n", err)
+}
+
+func doSomething(s string) (int, error) {
+    if s == "" {
+        return 0, &CustomError{ Reason: "Empty string 101"}
+    }
+
+    return len(s), nil
+}
+#+end_src
+
+#+RESULTS:
+: 0 Empty string
+: &main.CustomError{Reason:"Empty string"}

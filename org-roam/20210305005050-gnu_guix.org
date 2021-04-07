@@ -1,0 +1,94 @@
+#+title: GNU guix
+
+[[https://guix.gnu.org/][GNU guix]] is an "advanced" os and based on [[https://nixos.org/][nixos]]. I am interested in this particular disto/package manager since it ""GNU"" and the config's written in Scheme.
+
+** Basics
+
+- The config will be on =/etc/config.scm/.=
+
+*** Package management
+
+Basics of guix.
+- =guix install neovim=
+- =guix package --list-installed=
+- =guix package --roll-back=
+- =guix package --list-generations=
+
+Pull to update the packages.
+- =guix pull=
+
+This builds a new system generation with the latest packages and services.
+- =sudo guix system reconfigure /etc/config.scm=
+
+** Current config
+
+#+BEGIN_EXAMPLE scheme
+;; This is an operating system configuration generated
+;; by the graphical installer.
+
+(use-modules (gnu))
+(use-service-modules desktop networking ssh xorg sddm)
+
+(operating-system
+  (locale "en_IN.utf8")
+  (timezone "Asia/Kolkata")
+  (keyboard-layout (keyboard-layout "us"))
+  (host-name "matrix")
+  (users (cons* (user-account
+                  (name "mrprofessor")
+                  (comment "mrprofessor")
+                  (group "users")
+                  (home-directory "/home/mrprofessor")
+                  (supplementary-groups
+                    '("wheel" "netdev" "audio" "video")))
+                %base-user-accounts))
+  (packages
+    (append
+      (map  specification->package
+        '("nss-certs"
+          "neovim"
+          "git"
+          "zsh"
+          "i3status"
+          "sway"
+          "curl"))
+      %base-packages))
+  (services
+    (append
+      (list (service openssh-service-type)
+            (service tor-service-type)
+            (service network-manager-service-type)
+            (service wpa-supplicant-service-type)
+            (service elogind-service-type)
+        (service sddm-service-type
+             (sddm-configuration
+               (auto-login-user "mrprofessor") (relogin? #t)
+               (auto-login-session "sway.desktop")
+               (display-server "wayland")
+               (minimum-vt 1)
+               (xorg-configuration (xorg-configuration
+                         (keyboard-layout keyboard-layout)))))
+        )
+      %base-services))
+  (bootloader
+    (bootloader-configuration
+      (bootloader grub-bootloader)
+      (target "/dev/sda")
+      (keyboard-layout keyboard-layout)))
+  (swap-devices
+    (list (uuid "8ff1f044-8897-4858-a0c2-6c6915696d82")))
+  (file-systems
+    (cons* (file-system
+             (mount-point "/")
+             (device
+               (uuid "f656a53a-d59b-4581-ab51-0b3f007ff098"
+                     'ext4))
+             (type "ext4"))
+           (file-system
+             (mount-point "/home")
+             (device
+               (uuid "5e658a7b-6474-4ea7-b6d6-2b465fe144ec"
+                     'ext4))
+             (type "ext4"))
+           %base-file-systems)))
+#+END_EXAMPLE

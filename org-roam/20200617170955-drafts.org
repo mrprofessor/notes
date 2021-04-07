@@ -2,4 +2,4 @@
 
 * Drafts
 
-- This tag contains all the drafts for my blog. Once matured these will be removed and published in my blog [[https://rudra.dev][rudra.dev]].
+- This tag contains all the drafts for my blog. Once matured these will be published in my blog [[https://rudra.dev][rudra.dev]].

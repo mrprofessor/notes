@@ -1,3 +1,3 @@
 #+title: Golang troubleshooting
 
-- tags:: [[file:20200614231014-golang.org][GoLang]]
+- tags:: [[file:20200614231014-go.org][GoLang]]

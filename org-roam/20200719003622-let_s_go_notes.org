@@ -1,6 +1,6 @@
 #+title: Let's Go notes
 
-- tags :: [[file:20200614231014-golang.org][GoLang]]
+- tags :: [[file:20200614231014-go.org][GoLang]]
 
 * Let's go
 
@@ -8,7 +8,21 @@ This note is my personalized brain dump from Let's GO book by Alex Edwards.
 
 It's a great book though!
 
+
 ** Notes
+*** Basics
+- Handler -> Responsible for executing application logic.
+- Router -> Routes to the corresponding handlers.
+- Web server -> Server that listens for any incoming requests.
+*** Logging
+- Go loggers (log.Println(), log.Fatal()) output log messages and prefixes them with local date and time.
+  #+BEGIN_EXAMPLE
+    2021/02/12 11:45:19 Starting a server on :4000
+  #+END_EXAMPLE
+
+- =log.Fatal()= will call =os.Exit(1)= after writing the message, causing immediate exit.
+
+
 *** Routing table
 
 | Method | pattern         | Handler         | Action                       |

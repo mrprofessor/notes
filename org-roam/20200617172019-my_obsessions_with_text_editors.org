@@ -1,8 +1,8 @@
-#+title: My obsessions with Os and text-editors
+#+title: My obsessions with text-editors
 
 - tags :: [[file:20200617170955-drafts.org][Drafts]]
 
-* My obsessions with Os and text-editors
+* My obsessions with text-editors
 
 ** Intro
 
