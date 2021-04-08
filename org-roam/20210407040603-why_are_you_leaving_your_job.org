@@ -12,9 +12,8 @@ Perhaps she had an unfortunate position with her team, but her willingness to fl
 
 No matter how bad your situation is, stay positive. Focus on what you’re excited about doing at this new position:
 
-#+begin_example
-
+#+begin_quote
 My current position has been great in certain ways. It’s taught me a lot about communication, negotiations, and how to manage many clients at once. However, new client acquisition is so highly prioritized at my com- pany that I don’t have the opportunity to develop more lasting relation- ships with clients. I’m looking for an opportunity where I can do this.
-#+end_example
+#+end_quote
 
 Assuming that the new position matches this requirement, this would be an excellent response.
